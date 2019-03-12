@@ -1,0 +1,53 @@
+ /****************************************************************************
+  * crystal-game/assets/css/style.css
+  * CSS stylesheet for Crystal Game
+  *
+  * 2024 Monday, 11 March 2019 (EDT) [17966]
+  *
+  * University of Richmond Coding Boot Camp run by Triology Education Services
+  * Austin Kim
+  *
+  * Modified:
+  *   0037 Tuesday, 12 March 2019 (EDT) [17967]
+  ****************************************************************************/
+
+ /* Body */
+body {
+  background-color: #fff7e9;
+  background-image: url('../images/background.jpeg');
+  background-position: top;
+  background-repeat: repeat-y}
+
+ /* Declare base font size */
+:root {
+  --main-font-size: 48px}
+
+ /* Player names */
+#player1, #player2 {
+  font-size: var(--main-font-size)}
+
+ /* Player scores */
+#p1score, #p2score {
+  font-size: var(--main-font-size)}
+
+ /* Goal */
+ #goal {
+  font-size: var(--main-font-size)}
+
+ /* Player points */
+#p1points, #p2points {
+  font-size: var(--main-font-size)}
+
+ /* Crystals in crystal collection */
+img.crystal {
+  width: 32px}
+
+ /* Player turn/message */
+#p1turn, #p2turn {
+  font-size: var(--main-font-size);
+  color: red}
+
+ /* Footer */
+hr.lainbow {
+  background-image: url('../images/lainbow.png');
+  height: 2px}

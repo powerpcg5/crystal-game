@@ -1,0 +1,296 @@
+<!--************************************************************************
+    * crystal-game/index.html
+    * jQuery Crystal Game
+    *
+    * 2307 Saturday, 9 March 2019 (EST) [17964]
+    *
+    * University of Richmond Coding Boot Camp run by Trilogy Education Services
+    * Austin Kim
+    *
+    * Modified:
+    *   0010 Tuesday, 12 March 2019 (EDT) [17967]
+    ************************************************************************-->
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <meta name='viewport'
+      content='width=device-width, initial-scale=1, shrink-to-fit=no'/>
+    <!--Bootstrap CSS-->
+    <link rel='stylesheet'
+      href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+      integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T'
+      crossorigin='anonymous'/>
+    <!--CSS stylesheet-->
+    <link rel='stylesheet' type='text/css' href='assets/css/style.css'/>
+    <title>jQuery Crystal Game</title>
+    <script defer src='assets/javascript/game.js'></script>
+  </head>
+  <body>
+    <!--Bootstrap navigation bar-->
+    <nav class='navbar navbar-light bg-light'>
+      <a class='navbar-brand' href='index.html'>jQuery Crystal Game</a>
+      <button type='button' class='btn btn-outline-danger' data-toggle='modal'
+        data-target='#resetModal' id='resetAll'>Reset All</button>
+      <button type='button' class='btn btn-outline-warning' data-toggle='modal'
+        data-target='#settingsModal' id='settings'>Settings</button>
+      <button type='button' class='btn btn-outline-success' id='newGame'>New
+        Game</button>
+      <button type='button' class='btn btn-outline-info' data-toggle='modal'
+        data-target='#instructionsModal'
+        id='instructions'>Instructions</button>
+    </nav>
+    <!--Main game container-->
+    <main class='container mt-4'>
+      <div class='row border-top border-left border-right'>
+        <div class='col border-right text-center' id='player1'>Player 1</div>
+        <div class='col border-left  text-center' id='player2'>Player 2</div>
+      </div>
+      <div class='row border-top border-left border-right'>
+        <div class='col text-center' class='heading'>Score</div>
+      </div>
+      <div class='row border-left border-right'>
+        <div class='col border-right text-center' id='p1score'>0</div>
+        <div class='col border-left  text-center' id='p2score'>0</div>
+      </div>
+      <div class='row border-top border-left border-right'>
+        <div class='col text-center' class='heading'>Goal</div>
+      </div>
+      <div class='row border-left border-right'>
+        <div class='col text-center' id='goal'>120</div>
+      </div>
+      <div class='row border-top border-left border-right'>
+         <div class='col text-center' class='heading'>Points</div>
+      </div>
+      <div class='row border-left border-right'>
+        <div class='col border-right text-center' id='p1points'>0</div>
+        <div class='col border-left  text-center' id='p2points'>0</div>
+      </div>
+      <div class='row border-top border-left border-right'>
+        <div class='col border-right text-center' id='p1crystals'></div>
+        <div class='col border-left  text-center' id='p2crystals'></div>
+      </div>
+      <div class='row border-top border-left border-right border-bottom'>
+        <div class='col border-right text-center' id='p1turn'>-</div>
+        <div class='col border-left  text-center' id='p2turn'>-</div>
+      </div>
+      <div class='row align-items-center'>
+        <div class='col text-center'><img src='assets/images/crystal0.png'
+          alt='Red crystal' id='crystal0'/></div>
+        <div class='col text-center'><img src='assets/images/crystal1.png'
+          alt='Yellow crystal' id='crystal1'/></div>
+        <div class='col text-center'><img src='assets/images/crystal2.png'
+          alt='Green crystal' id='crystal2'/></div>
+        <div class='col text-center'><img src='assets/images/crystal3.png'
+          alt='Blue crystal' id='crystal3'/></div>
+        <div class='col text-center'><button type='button' class='btn
+          btn-outline-secondary' id='pass'>Pass</button></div>
+      </div>
+    </main>
+    <!--Reset modal-->
+    <div class='modal fade' id='resetModal' tabindex='-1' role='dialog'
+      aria-labelledby='resetModalLabel' aria-hidden='true'>
+      <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='resetModalLabel'>jQuery Crystal
+              Game</h5>
+            <button type='button' class='close' data-dismiss='modal'
+              aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>
+          <div class='modal-body'>
+            <div class='md-form'>
+              <label for='player1name'>Player 1 name:</label>
+              <input type='text' class='form-control' id='player1name'
+                placeholder='Player 1'/>
+              <label class='mt-3' for='player2name'>Player 2 name:</label>
+              <input type='text' class='form-control' id='player2name'
+                placeholder='Player 2'/>
+            </div>
+          </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-secondary'
+              data-dismiss='modal' id='resetModalCancel'>Cancel</button>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'
+              id='resetModalOK'>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Settings modal-->
+    <div class='modal fade' id='settingsModal' tabindex='-1' role='dialog'
+      aria-labelledby='settingsModalLabel' aria-hidden='true'>
+      <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='settingsModalLabel'>jQuery Crystal
+              Game</h5>
+          </div>
+          <div class='modal-body'>
+            <div class='md-form'>
+              <label for='goalRangeLower' id='goalRangeLowerPrompt'>Lower limit
+                of Goal range:</label>
+              <input type='text' class='form-control' id='goalRangeLower'
+                placeholder='19'/>
+              <label class='mt-3' for='goalRangeUpper'
+                id='goalRangeUpperPrompt'>Upper limit of Goal range:</label>
+              <input type='text' class='form-control' id='goalRangeUpper'
+                placeholder='120'/>
+              <label class='mt-3' for='crystalRangeLower'
+                id='crystalRangeLowerPrompt'>Lower limit of crystal point
+                range:</label>
+              <input type='text' class='form-control' id='crystalRangeLower'
+                placeholder='1'/>
+              <label class='mt-3' for='crystalRangeUpper'
+                id='crystalRangeUpperPrompt'>Upper limit of crystal point
+                range:</label>
+              <input type='text' class='form-control' id='crystalRangeUpper'
+                placeholder='12'/>
+            </div>
+          </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-secondary'
+              data-dismiss='modal' id='settingsModalCancel'>Cancel</button>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'
+              id='settingsModalOK'>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Invalid goal range modal-->
+    <div class='modal fade' id='invalidGoalRangeModal' tabindex='-1'
+      role='dialog' aria-labelledby='invalidGoalRangeLabel' aria-hidden='true'>
+      <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='invalidGoalRangeLabel'>jQuery Crystal
+              Game</h5>
+          </div>
+          <div class='modal-body'>
+            <p>The lower limit of the goal range must be at least 1 point,
+              while the upper limit of the goal range must be greater than or
+              equal to the lower limit.</p>
+          </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'
+              id='invalidGoalRangeOK'>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Invalid crystal point range modal-->
+    <div class='modal fade' id='invalidCrystalPointModal' tabindex='-1'
+      role='dialog' aria-labelledby='invalidCrystalPointLabel'
+      aria-hidden='true'>
+      <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='invalidCrystalPointLabel'>jQuery
+              Crystal Game</h5>
+          </div>
+          <div class='modal-body'>
+            <p>The lower limit of the crystal point range must be at least 1
+              point, while the upper limit of the crystal point range must be
+              both (1.) greater than or equal to the lower limit, and (2.)
+              less than or equal to the goal range upper limit.</p>
+          </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'
+              id='invalidCrystalPointOK'>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Instructions modal-->
+    <div class='modal fade' id='instructionsModal' tabindex='-1' role='dialog'
+      aria-labelledby='instructionsModalLabel' aria-hidden='true'>
+      <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='instructionsModalLabel'>jQuery Crystal
+              Game</h5>
+          </div>
+          <div class='modal-body'>
+            <p id='instructionsText'>Enter your player names (or click on
+              Cancel to accept the defaults); then take turns collecting
+              (clicking on) crystals to add them to your collection.  Each
+              crystal has a random point value from 1 point to 12 points (which
+              is fixed for the duration of the game).  Your goal is to collect
+              crystals in order to accumulate points up to, but not exceeding,
+              the point goal, which is a random number from 19 to 120 points
+              (also fixed for the duration of the game).</p>
+            <p>The first player to hit the goal wins the game.  On each turn,
+              you also have the option to pass (by clicking on the Pass
+              button); if both players pass in succession, the player whose
+              points are closer to the goal wins.  If during the course of the
+              game either player overshoots the goal, the other player
+              wins.</p>
+            <p>Clicking on the Settings button allows you to set the random
+              point goal ranges and the random crystal point ranges, which
+              take effect on the next game.</p>
+            <p>The first player&rsquo;s turn for the first game is chosen at
+              random; the first player&rsquo;s turn then alternates in
+              subsequent games.  After a game is complete, click on New Game to
+              begin a new game; or optionally click on Reset All to reset
+              everything, including player names and player scores.  Good luck!
+              :)</p>
+          </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'
+              id='instructionsModalOK'>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Footer-->
+<!--<div class='container fixed-bottom'>-->
+    <div class='container'>
+      <div class='row'>
+        <div class='col'>
+          <hr class='lainbow'/>
+        </div>
+      </div>
+      <div class='row justify-content-between'>
+        <div class='col-auto'>
+          Copyright &copy; 2019 Austin Kim under the terms of the <a
+            href='https://opensource.org/licenses/MIT/'>MIT License</a>.<br
+          />Last modified at 2343 Monday, 11 March 2019 (EDT) [17966].<br
+          />Send errors and broken links to freennix at gmail dot com.
+        </div>
+        <!--Tooltips must be placed on _img_ elements for proper positioning-->
+        <div class='col-auto'>
+          <a href='https://validator.w3.org/check?uri=referer'><img
+            src='https://www.w3.org/QA/Tools/I_heart_validator_lg.png'
+            title='Valid HTML 5!' alt='Valid HTML 5!'
+            data-toggle='tooltip'/></a>
+<!--CSS not valid due to Bootstrap
+          <a href='https://jigsaw.w3.org/css-validator/check?uri=referer'><img
+            src='https://jigsaw.w3.org/css-validator/images/vcss.png'
+            title='Valid CSS level 3!' alt='Valid CSS level 3!'
+            data-toggle='tooltip'/></a>
+-->
+        </div>
+      </div>
+    </div>
+    <!--jQuery (slim build)-->
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'
+      integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
+      crossorigin='anonymous'></script>
+    <!--Popper.js-->
+    <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'
+      integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1'
+      crossorigin='anonymous'></script>
+    <!--Bootstrap-->
+    <script
+      src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
+      integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM'
+      crossorigin='anonymous'></script>
+    <!--Enable Bootstrap tooltips-->
+    <script>
+      $("[data-toggle='tooltip']").tooltip()
+    </script>
+  </body>
+</html>
